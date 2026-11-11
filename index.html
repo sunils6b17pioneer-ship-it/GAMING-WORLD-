@@ -3,173 +3,244 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GAMING WORLD | Ultimate Gaming Hub</title>
-<meta name="description" content="Gaming World - Gaming news, esports, guides and updates.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Gaming World - Gaming news, esports, guides and gaming updates.">
+<title>GAMING WORLD | Play Beyond Limits</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#080b14;color:white;font-family:Arial,sans-serif}
-header{background:#101629;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;border-bottom:1px solid #25304a}
-.logo{font-size:23px;font-weight:900;color:#00eaff}
-.logo span{color:#fff}
-nav a{color:white;text-decoration:none;margin:0 9px;font-size:13px}
-nav a:hover{color:#00eaff}
-.hero{padding:75px 7%;text-align:center;background:radial-gradient(circle at top,#173e66,#080b14 65%)}
-.hero h1{font-size:clamp(36px,7vw,65px);font-weight:900}
-.hero h1 span{color:#00eaff}
-.hero p{color:#b7c5dc;margin:18px auto;max-width:600px;line-height:1.7}
-.btn{display:inline-block;padding:13px 25px;background:#00cce9;color:#001018;text-decoration:none;font-weight:bold;border-radius:7px;margin:10px}
-section{padding:40px 6%}
-.heading{font-size:27px;margin-bottom:22px}
-.heading span{color:#00eaff}
-.search{width:100%;padding:15px;background:#141c30;border:1px solid #293751;border-radius:8px;color:white;margin-bottom:18px;font-size:15px}
-.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}
-.filters button{padding:10px 16px;background:#151e32;color:white;border:1px solid #30405b;border-radius:20px;cursor:pointer}
-.filters button.active,.filters button:hover{background:#00cce9;color:#001018}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{background:#111a2c;border:1px solid #263650;border-radius:12px;overflow:hidden;transition:.2s}
-.card:hover{transform:translateY(-5px);border-color:#00d9ff}
-.card img{width:100%;height:155px;object-fit:cover;background:#202a40}
-.card-content{padding:17px}
-.tag{font-size:11px;color:#00eaff;font-weight:bold}
-.card h3{margin:10px 0;font-size:19px}
-.card p{font-size:13px;color:#b4c1d5;line-height:1.6}
-.card a{display:inline-block;margin-top:14px;color:#00eaff;text-decoration:none}
-.ad{border:1px dashed #56637c;border-radius:10px;text-align:center;padding:35px 10px;color:#8e9bb0;margin:25px 0;background:#0d1320}
-.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px}
-.game{background:#151f33;border-radius:10px;text-align:center;padding:23px 10px;border:1px solid #2b3b56}
-.game b{display:block;margin-top:12px}
-footer{text-align:center;padding:35px;background:#101629;color:#94a3ba;font-size:13px}
-footer a{color:#00eaff;text-decoration:none}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080b14;--panel:#111a2c;--cyan:#00eaff;--purple:#9c62ff;--muted:#aab5ca}
+body{background:var(--bg);color:white;font-family:Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:10;background:#080b14ee;backdrop-filter:blur(15px);border-bottom:1px solid #26334c;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:22px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--cyan)}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{font-size:13px;color:#d6e0f3}
+nav a:hover{color:var(--cyan)}
+.hero{min-height:490px;padding:90px 7%;display:flex;align-items:center;background:linear-gradient(90deg,#080b14 8%,#080b14c9 55%,#080b1460),url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1500') center/cover}
+.hero-content{max-width:650px}
+.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:4px;font-weight:bold}
+.hero h1{font-size:clamp(42px,8vw,78px);line-height:1.03;margin:18px 0}
+.hero h1 span{color:var(--cyan)}
+.hero p{color:#c2cee2;line-height:1.8;max-width:540px}
+.btn{display:inline-block;background:var(--cyan);color:#04111a;font-weight:bold;padding:14px 22px;border-radius:7px;margin-top:25px}
+.btn.secondary{background:#ffffff12;border:1px solid #ffffff55;color:white;margin-left:8px}
+section{padding:48px 6%}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:23px}
+.section-head h2{font-size:25px}
+.section-head span{color:var(--cyan)}
+.sub{font-size:12px;color:var(--muted);margin-top:8px}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:13px}
+.game{min-height:120px;border-radius:12px;background:linear-gradient(145deg,#182844,#101525);border:1px solid #30425e;padding:19px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s}
+.game:hover{transform:translateY(-5px);border-color:var(--cyan)}
+.game .emoji{font-size:29px}
+.game b{font-size:14px}
+.game small{color:var(--muted);margin-top:5px}
+.search{width:100%;padding:15px;border-radius:9px;background:#121c30;border:1px solid #30405d;color:white;margin-bottom:17px;outline:none}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:23px}
+.filters button{background:#131d31;border:1px solid #33445f;color:white;padding:10px 16px;border-radius:30px;cursor:pointer}
+.filters button.active,.filters button:hover{background:var(--cyan);color:#06121b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid #273650;border-radius:13px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:#536b96}
+.card img{width:100%;height:165px;object-fit:cover;background:#18233b}
+.card-body{padding:17px}
+.tag{font-size:11px;color:var(--cyan);font-weight:bold;text-transform:uppercase}
+.card h3{font-size:18px;line-height:1.4;margin:10px 0}
+.card p{color:var(--muted);font-size:13px;line-height:1.65}
+.card .more{display:inline-block;margin-top:13px;color:var(--cyan);font-size:13px;font-weight:bold}
+.date{font-size:11px;color:#8392aa;margin-top:10px}
+.feature{background:linear-gradient(110deg,#142b48,#17152f);border:1px solid #35466b;border-radius:15px;padding:27px;line-height:1.7}
+.feature h3{font-size:22px;margin-bottom:10px}
+.feature p{color:#bdc9dc;font-size:14px}
+.adspace{min-height:110px;border:1px dashed #52617b;border-radius:10px;display:grid;place-items:center;text-align:center;color:#7889a5;font-size:12px;margin-top:20px}
+.status{color:#9aabc4;font-size:12px;margin-bottom:16px}
+footer{padding:38px 6%;background:#101729;border-top:1px solid #26344c;color:#aab5ca;text-align:center}
+footer strong{color:var(--cyan)}
+footer p{font-size:12px;line-height:1.8;margin-top:10px}
 @media(max-width:650px){
- header{flex-direction:column;gap:14px}
- nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
- nav a{margin:0}
- .hero{padding:55px 5%}
+ header{flex-direction:column}
+ nav{justify-content:center;gap:13px}
+ .hero{min-height:430px;padding:65px 6%}
+ section{padding:35px 5%}
 }
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">🎮 GAMING<span> WORLD</span></div>
+<div class="logo">🎮 GAMING <span>WORLD</span></div>
 <nav>
-<a href="#home">Home</a>
-<a href="#games">Games</a>
-<a href="#news">News</a>
-<a href="#esports">Esports</a>
+<a href="#home">HOME</a>
+<a href="#games">GAMES</a>
+<a href="#news">NEWS</a>
+<a href="#esports">ESPORTS</a>
+<a href="#guides">GUIDES</a>
 </nav>
 </header>
 
 <div class="hero" id="home">
-<h1>ENTER THE <span>GAMING</span> WORLD</h1>
-<p>Your ultimate destination for gaming news, updates, esports, guides and everything gaming.</p>
-<a class="btn" href="#games">EXPLORE GAMES</a>
-<a class="btn" href="#news">LATEST NEWS</a>
+<div class="hero-content">
+<div class="eyebrow">YOUR ULTIMATE GAMING DESTINATION</div>
+<h1>ENTER THE<br><span>GAMEVERSE.</span></h1>
+<p>Explore gaming worlds, discover the latest updates, follow esports and learn new strategies. Everything gaming, in one place.</p>
+<a class="btn" href="#games">EXPLORE GAMES ↗</a>
+<a class="btn secondary" href="#news">LATEST NEWS</a>
+</div>
 </div>
 
 <section id="games">
-<h2 class="heading">POPULAR <span>GAMES</span></h2>
+<div class="section-head">
+<div><h2>EXPLORE <span>UNIVERSES</span></h2>
+<p class="sub">Choose your favourite gaming world.</p></div>
+</div>
 <div class="games">
-<div class="game">🔥<b>FREE FIRE</b></div>
-<div class="game">🎯<b>BGMI</b></div>
-<div class="game">⛏️<b>MINECRAFT</b></div>
-<div class="game">🚗<b>GTA</b></div>
-<div class="game">⚔️<b>VALORANT</b></div>
-<div class="game">🎮<b>MORE GAMES</b></div>
+<a class="game" href="https://www.freefiremobile.com/"><span class="emoji">🔥</span><b>FREE FIRE</b><small>Battle royale</small></a>
+<a class="game" href="https://www.battlegroundsmobileindia.com/"><span class="emoji">🎯</span><b>BGMI</b><small>Mobile action</small></a>
+<a class="game" href="https://www.minecraft.net/"><span class="emoji">⛏️</span><b>MINECRAFT</b><small>Creative world</small></a>
+<a class="game" href="https://www.rockstargames.com/"><span class="emoji">🚗</span><b>GTA</b><small>Open world</small></a>
+<a class="game" href="https://playvalorant.com/"><span class="emoji">⚡</span><b>VALORANT</b><small>Tactical action</small></a>
+<a class="game" href="https://www.fortnite.com/"><span class="emoji">🌌</span><b>FORTNITE</b><small>Battle royale</small></a>
 </div>
 </section>
 
 <section id="news">
-<h2 class="heading">LATEST <span>GAMING NEWS</span></h2>
-<input class="search" id="search" placeholder="🔍 Search gaming news..." oninput="filterNews()">
-<div class="filters">
-<button class="active" onclick="setFilter('All',this)">All</button>
-<button onclick="setFilter('Free Fire',this)">Free Fire</button>
-<button onclick="setFilter('BGMI',this)">BGMI</button>
-<button onclick="setFilter('GTA',this)">GTA</button>
-<button onclick="setFilter('Minecraft',this)">Minecraft</button>
+<div class="section-head">
+<div><h2>LIVE GAMING <span>HEADLINES</span></h2>
+<p class="sub">Recent headlines from gaming publishers via Google News.</p></div>
 </div>
+<input id="search" class="search" placeholder="🔍 Search gaming headlines..." oninput="render()">
+<div class="filters" id="filters">
+<button class="active" onclick="choose('All',this)">ALL</button>
+<button onclick="choose('Free Fire',this)">FREE FIRE</button>
+<button onclick="choose('BGMI',this)">BGMI</button>
+<button onclick="choose('GTA',this)">GTA</button>
+<button onclick="choose('Minecraft',this)">MINECRAFT</button>
+<button onclick="choose('Valorant',this)">VALORANT</button>
+</div>
+<div id="status" class="status">Loading recent headlines...</div>
 <div class="grid" id="newsGrid"></div>
 </section>
 
 <section>
-<div class="ad">
-ADVERTISEMENT SPACE<br><br>
-Ad placement will be activated after advertising network approval.
+<div class="adspace">
+ADVERTISEMENT SPACE<br>
+Ad code can be added here after advertising-network approval.
 </div>
 </section>
 
 <section id="esports">
-<h2 class="heading">ESPORTS <span>ZONE</span></h2>
+<div class="section-head">
+<div><h2>THE <span>ESPORTS ARENA</span></h2>
+<p class="sub">Explore competitive gaming and tournament coverage.</p></div>
+</div>
 <div class="grid">
-<div class="card"><div class="card-content">
-<h3>🏆 Tournament Updates</h3>
-<p>Discover esports competitions, tournament schedules and results.</p>
-</div></div>
-<div class="card"><div class="card-content">
-<h3>🎯 Pro Gaming Guides</h3>
-<p>Explore strategies, game mechanics and tips to improve your skills.</p>
-</div></div>
-<div class="card"><div class="card-content">
-<h3>🌍 Global Gaming</h3>
-<p>Follow gaming developments and esports communities around the world.</p>
-</div></div>
+<div class="feature"><h3>🏆 Tournament coverage</h3><p>Follow official tournament announcements, event dates and results.</p></div>
+<div class="feature"><h3>🌍 Global esports</h3><p>Explore esports teams, competitions and gaming communities.</p></div>
+<div class="feature"><h3>🎮 Competitive guides</h3><p>Understand game mechanics, maps and strategies through original guides.</p></div>
 </div>
 </section>
 
-<section>
-<h2 class="heading">WHY <span>GAMING WORLD?</span></h2>
+<section id="guides">
+<div class="section-head">
+<div><h2>GAMING <span>KNOWLEDGE HUB</span></h2>
+<p class="sub">Build your skills with useful original guides.</p></div>
+</div>
 <div class="grid">
-<div class="game">📰<b>Gaming News</b></div>
-<div class="game">🎮<b>Game Guides</b></div>
-<div class="game">🏆<b>Esports</b></div>
-<div class="game">🔥<b>Trending Topics</b></div>
+<div class="feature"><h3>🎯 Beginner's guide</h3><p>Learn game basics, controls, settings and how to understand the game interface.</p></div>
+<div class="feature"><h3>🧠 Strategy corner</h3><p>Explore map awareness, teamwork, decision-making and practice routines.</p></div>
+<div class="feature"><h3>🖥️ Gaming technology</h3><p>Learn about gaming devices, graphics, performance and new technology.</p></div>
+</div>
+</section>
+
+<section id="about">
+<div class="feature">
+<h3>ABOUT GAMING WORLD</h3>
+<p>Gaming World is an independent gaming information website. We share gaming headlines, guides and esports information. Game names and trademarks belong to their respective owners. We are not affiliated with the game publishers.</p>
 </div>
 </section>
 
 <footer>
-<h3>🎮 GAMING WORLD</h3>
-<p style="margin:12px">Your Gaming Universe Starts Here.</p>
+<strong>🎮 GAMING WORLD</strong>
+<p>Play Beyond Limits.</p>
+<p>Independent gaming information and entertainment website.</p>
 <p>© 2026 Gaming World. All rights reserved.</p>
-<p style="margin-top:12px">
-<a href="#home">Home</a> |
-<a href="#games">Games</a> |
-<a href="#news">News</a>
-</p>
+<p><a href="#about">About</a> · <a href="#home">Home</a> · <a href="#news">News</a></p>
 </footer>
 
 <script>
-const articles=[
-{game:"Free Fire",title:"Free Fire Updates & News",desc:"Discover the latest Free Fire announcements, events and gameplay developments.",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600"},
-{game:"BGMI",title:"BGMI Gaming Updates",desc:"Explore BGMI news, competitive gaming and gameplay information.",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600"},
-{game:"GTA",title:"GTA Gaming Universe",desc:"Explore GTA features, announcements and gaming guides.",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600"},
-{game:"Minecraft",title:"Minecraft World",desc:"Discover Minecraft building ideas, survival guides and updates.",img:"https://images.unsplash.com/photo-1607513746994-51f730a44832?w=600"},
-{game:"Free Fire",title:"Free Fire Tips & Strategies",desc:"Learn about gameplay mechanics and useful strategies.",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600"},
-{game:"BGMI",title:"Esports & Competition",desc:"Follow competitive gaming, teams and tournament coverage.",img:"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600"}
-];
-let current="All";
-function render(){
-const q=document.getElementById("search").value.toLowerCase();
-const list=articles.filter(a=>(current==="All"||a.game===current)&&(a.title+" "+a.desc+" "+a.game).toLowerCase().includes(q));
-document.getElementById("newsGrid").innerHTML=list.length?list.map(a=>`
-<div class="card">
-<img src="${a.img}" alt="Gaming image" loading="lazy">
-<div class="card-content">
-<span class="tag">${a.game.toUpperCase()}</span>
-<h3>${a.title}</h3>
-<p>${a.desc}</p>
-<a href="#esports">Explore more →</a>
-</div></div>`).join(""):"<p>No matching articles found.</p>";
+const topics={
+"Free Fire":"Free Fire gaming news",
+"BGMI":"BGMI gaming news",
+"GTA":"GTA game news Rockstar",
+"Minecraft":"Minecraft game news",
+"Valorant":"Valorant game news"
+};
+let articles=[];
+let selected="All";
+
+async function loadNews(){
+const status=document.getElementById("status");
+status.textContent="Fetching recent gaming headlines...";
+let all=[];
+for(const [game,query] of Object.entries(topics)){
+try{
+const url="https://news.google.com/rss/search?q="+encodeURIComponent(query)+"&hl=en-IN&gl=IN&ceid=IN:en";
+const api="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(url);
+const response=await fetch(api);
+if(!response.ok)throw Error("Feed unavailable");
+const data=await response.json();
+if(data.status!=="ok")throw Error("Feed unavailable");
+(data.items||[]).slice(0,5).forEach(item=>{
+all.push({
+game,
+title:item.title,
+link:item.link,
+date:item.pubDate,
+source:item.author||"News publisher",
+description:(item.description||"").replace(/<[^>]*>/g," ").slice(0,180)
+});
+});
+}catch(e){}
 }
-function setFilter(name,button){
-current=name;
+articles=all;
+if(articles.length){
+status.textContent="Recent headlines loaded. Open each article at its original publisher.";
+}else{
+status.textContent="Live news service is temporarily unavailable. Try again later.";
+}
+render();
+}
+
+function choose(name,button){
+selected=name;
 document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
 button.classList.add("active");
 render();
 }
-function filterNews(){render()}
-render();
+function render(){
+const query=document.getElementById("search").value.toLowerCase();
+const list=articles.filter(a=>
+(selected==="All"||a.game===selected)&&
+(a.title+" "+a.game+" "+a.description).toLowerCase().includes(query)
+);
+document.getElementById("newsGrid").innerHTML=list.length?list.map(a=>`
+<article class="card">
+<div class="card-body">
+<div class="tag">${a.game}</div>
+<h3>${escapeHTML(a.title)}</h3>
+<p>${escapeHTML(a.description)}</p>
+<div class="date">${escapeHTML(a.date||"Recent update")}</div>
+<a class="more" href="${safeURL(a.link)}" target="_blank" rel="noopener noreferrer">READ AT SOURCE ↗</a>
+</div></article>`).join(""):"<p class='status'>No headlines found for this selection.</p>";
+}
+function escapeHTML(s){
+return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function safeURL(s){
+try{const u=new URL(s);return u.protocol==="https:"?u.href:"#"}catch(e){return "#"}
+}
+loadNews();
 </script>
 </body>
 </html>
