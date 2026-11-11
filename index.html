@@ -1,1 +1,175 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMING WORLD | Ultimate Gaming Hub</title>
+<meta name="description" content="Gaming World - Gaming news, esports, guides and updates.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080b14;color:white;font-family:Arial,sans-serif}
+header{background:#101629;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;border-bottom:1px solid #25304a}
+.logo{font-size:23px;font-weight:900;color:#00eaff}
+.logo span{color:#fff}
+nav a{color:white;text-decoration:none;margin:0 9px;font-size:13px}
+nav a:hover{color:#00eaff}
+.hero{padding:75px 7%;text-align:center;background:radial-gradient(circle at top,#173e66,#080b14 65%)}
+.hero h1{font-size:clamp(36px,7vw,65px);font-weight:900}
+.hero h1 span{color:#00eaff}
+.hero p{color:#b7c5dc;margin:18px auto;max-width:600px;line-height:1.7}
+.btn{display:inline-block;padding:13px 25px;background:#00cce9;color:#001018;text-decoration:none;font-weight:bold;border-radius:7px;margin:10px}
+section{padding:40px 6%}
+.heading{font-size:27px;margin-bottom:22px}
+.heading span{color:#00eaff}
+.search{width:100%;padding:15px;background:#141c30;border:1px solid #293751;border-radius:8px;color:white;margin-bottom:18px;font-size:15px}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}
+.filters button{padding:10px 16px;background:#151e32;color:white;border:1px solid #30405b;border-radius:20px;cursor:pointer}
+.filters button.active,.filters button:hover{background:#00cce9;color:#001018}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#111a2c;border:1px solid #263650;border-radius:12px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-5px);border-color:#00d9ff}
+.card img{width:100%;height:155px;object-fit:cover;background:#202a40}
+.card-content{padding:17px}
+.tag{font-size:11px;color:#00eaff;font-weight:bold}
+.card h3{margin:10px 0;font-size:19px}
+.card p{font-size:13px;color:#b4c1d5;line-height:1.6}
+.card a{display:inline-block;margin-top:14px;color:#00eaff;text-decoration:none}
+.ad{border:1px dashed #56637c;border-radius:10px;text-align:center;padding:35px 10px;color:#8e9bb0;margin:25px 0;background:#0d1320}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px}
+.game{background:#151f33;border-radius:10px;text-align:center;padding:23px 10px;border:1px solid #2b3b56}
+.game b{display:block;margin-top:12px}
+footer{text-align:center;padding:35px;background:#101629;color:#94a3ba;font-size:13px}
+footer a{color:#00eaff;text-decoration:none}
+@media(max-width:650px){
+ header{flex-direction:column;gap:14px}
+ nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+ nav a{margin:0}
+ .hero{padding:55px 5%}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">🎮 GAMING<span> WORLD</span></div>
+<nav>
+<a href="#home">Home</a>
+<a href="#games">Games</a>
+<a href="#news">News</a>
+<a href="#esports">Esports</a>
+</nav>
+</header>
+
+<div class="hero" id="home">
+<h1>ENTER THE <span>GAMING</span> WORLD</h1>
+<p>Your ultimate destination for gaming news, updates, esports, guides and everything gaming.</p>
+<a class="btn" href="#games">EXPLORE GAMES</a>
+<a class="btn" href="#news">LATEST NEWS</a>
+</div>
+
+<section id="games">
+<h2 class="heading">POPULAR <span>GAMES</span></h2>
+<div class="games">
+<div class="game">🔥<b>FREE FIRE</b></div>
+<div class="game">🎯<b>BGMI</b></div>
+<div class="game">⛏️<b>MINECRAFT</b></div>
+<div class="game">🚗<b>GTA</b></div>
+<div class="game">⚔️<b>VALORANT</b></div>
+<div class="game">🎮<b>MORE GAMES</b></div>
+</div>
+</section>
+
+<section id="news">
+<h2 class="heading">LATEST <span>GAMING NEWS</span></h2>
+<input class="search" id="search" placeholder="🔍 Search gaming news..." oninput="filterNews()">
+<div class="filters">
+<button class="active" onclick="setFilter('All',this)">All</button>
+<button onclick="setFilter('Free Fire',this)">Free Fire</button>
+<button onclick="setFilter('BGMI',this)">BGMI</button>
+<button onclick="setFilter('GTA',this)">GTA</button>
+<button onclick="setFilter('Minecraft',this)">Minecraft</button>
+</div>
+<div class="grid" id="newsGrid"></div>
+</section>
+
+<section>
+<div class="ad">
+ADVERTISEMENT SPACE<br><br>
+Ad placement will be activated after advertising network approval.
+</div>
+</section>
+
+<section id="esports">
+<h2 class="heading">ESPORTS <span>ZONE</span></h2>
+<div class="grid">
+<div class="card"><div class="card-content">
+<h3>🏆 Tournament Updates</h3>
+<p>Discover esports competitions, tournament schedules and results.</p>
+</div></div>
+<div class="card"><div class="card-content">
+<h3>🎯 Pro Gaming Guides</h3>
+<p>Explore strategies, game mechanics and tips to improve your skills.</p>
+</div></div>
+<div class="card"><div class="card-content">
+<h3>🌍 Global Gaming</h3>
+<p>Follow gaming developments and esports communities around the world.</p>
+</div></div>
+</div>
+</section>
+
+<section>
+<h2 class="heading">WHY <span>GAMING WORLD?</span></h2>
+<div class="grid">
+<div class="game">📰<b>Gaming News</b></div>
+<div class="game">🎮<b>Game Guides</b></div>
+<div class="game">🏆<b>Esports</b></div>
+<div class="game">🔥<b>Trending Topics</b></div>
+</div>
+</section>
+
+<footer>
+<h3>🎮 GAMING WORLD</h3>
+<p style="margin:12px">Your Gaming Universe Starts Here.</p>
+<p>© 2026 Gaming World. All rights reserved.</p>
+<p style="margin-top:12px">
+<a href="#home">Home</a> |
+<a href="#games">Games</a> |
+<a href="#news">News</a>
+</p>
+</footer>
+
+<script>
+const articles=[
+{game:"Free Fire",title:"Free Fire Updates & News",desc:"Discover the latest Free Fire announcements, events and gameplay developments.",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600"},
+{game:"BGMI",title:"BGMI Gaming Updates",desc:"Explore BGMI news, competitive gaming and gameplay information.",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600"},
+{game:"GTA",title:"GTA Gaming Universe",desc:"Explore GTA features, announcements and gaming guides.",img:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600"},
+{game:"Minecraft",title:"Minecraft World",desc:"Discover Minecraft building ideas, survival guides and updates.",img:"https://images.unsplash.com/photo-1607513746994-51f730a44832?w=600"},
+{game:"Free Fire",title:"Free Fire Tips & Strategies",desc:"Learn about gameplay mechanics and useful strategies.",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600"},
+{game:"BGMI",title:"Esports & Competition",desc:"Follow competitive gaming, teams and tournament coverage.",img:"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600"}
+];
+let current="All";
+function render(){
+const q=document.getElementById("search").value.toLowerCase();
+const list=articles.filter(a=>(current==="All"||a.game===current)&&(a.title+" "+a.desc+" "+a.game).toLowerCase().includes(q));
+document.getElementById("newsGrid").innerHTML=list.length?list.map(a=>`
+<div class="card">
+<img src="${a.img}" alt="Gaming image" loading="lazy">
+<div class="card-content">
+<span class="tag">${a.game.toUpperCase()}</span>
+<h3>${a.title}</h3>
+<p>${a.desc}</p>
+<a href="#esports">Explore more →</a>
+</div></div>`).join(""):"<p>No matching articles found.</p>";
+}
+function setFilter(name,button){
+current=name;
+document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+button.classList.add("active");
+render();
+}
+function filterNews(){render()}
+render();
+</script>
+</body>
+</html>
