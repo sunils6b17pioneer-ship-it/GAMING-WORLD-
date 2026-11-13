@@ -32,14 +32,14 @@ label{display:block;font-size:12px;color:#b8cbd9;margin:10px 0 5px}input,select{
 <div class="card"><div class="asset-head"><div><div class="asset-name">Bitcoin</div><div class="symbol">BTC • INR</div></div><span class="pill">CRYPTO</span></div><div class="price" id="btcPrice">Loading…</div><div class="change" id="btcMeta">Source: CoinGecko</div></div>
 <div class="card"><div class="asset-head"><div><div class="asset-name">Ethereum</div><div class="symbol">ETH • INR</div></div><span class="pill">CRYPTO</span></div><div class="price" id="ethPrice">Loading…</div><div class="change" id="ethMeta">Source: CoinGecko</div></div>
 </div>
-<p class="small">Gold quote is converted from USD per troy ounce to INR per gram using a public USD/INR reference rate. It is an indicative spot estimate, not a jeweller's retail price. Taxes, GST, making charges and local premiums are excluded.</p>
+<p class="small">Gold quote is converted from USD per troy ounce to INR per gram using a public USD/INR reference rate. Silver is fetched directly in INR per troy ounce and converted to INR per gram. Both are indicative spot estimates, not jeweller retail prices. Taxes, GST, making charges and local premiums are excluded.</p>
 
 <h2 class="section-title" id="charts">Price tracker</h2>
-<div class="card"><div class="row"><div><label>Choose asset</label><select id="chartAsset" onchange="drawChart()"><option value="gold">Gold (live snapshots)</option><option value="btc">Bitcoin (live snapshots)</option><option value="eth">Ethereum (live snapshots)</option></select></div><div><label>Chart range</label><select id="chartRange" onchange="drawChart()"><option value="all">All saved snapshots</option><option value="day">Last 24 hours</option></select></div></div><div class="chart-wrap"><canvas id="priceChart"></canvas></div><p class="small" id="chartNote">This graph builds from prices collected while this page is open. It is not historical exchange data.</p></div>
+<div class="card"><div class="row"><div><label>Choose asset</label><select id="chartAsset" onchange="drawChart()"><option value="gold">Gold (live snapshots)</option><option value="silver">Silver (live snapshots)</option><option value="btc">Bitcoin (live snapshots)</option><option value="eth">Ethereum (live snapshots)</option></select></div><div><label>Chart range</label><select id="chartRange" onchange="drawChart()"><option value="all">All saved snapshots</option><option value="day">Last 24 hours</option></select></div></div><div class="chart-wrap"><canvas id="priceChart"></canvas></div><p class="small" id="chartNote">This graph builds from prices collected while this page is open. It is not historical exchange data.</p></div>
 
 <h2 class="section-title" id="tools">Calculators</h2>
 <div class="grid">
-<div class="card"><h3>Gold / silver quantity value</h3><label>Asset</label><select id="calcAsset"><option value="gold">Gold</option><option value="silver">Silver (manual rate)</option></select><label>Rate per gram (INR)</label><input id="rate" type="number" placeholder="Enter rate per gram"><label>Quantity</label><div class="row"><input id="qty" type="number" value="1" min="0" step="any"><select id="unit"><option value="g">Grams</option><option value="mg">Milligrams</option></select></div><button onclick="calculateMetal()">Calculate value</button><div class="result" id="metalResult">₹ —</div><p class="small">1 gram = 1,000 milligrams. Gold live rate can be filled from the market card.</p></div>
+<div class="card"><h3>Gold / silver quantity value</h3><label>Asset</label><select id="calcAsset" onchange="syncMetalRate()"><option value="gold">Gold</option><option value="silver">Silver (live rate)</option></select><label>Rate per gram (INR)</label><input id="rate" type="number" placeholder="Enter rate per gram"><label>Quantity</label><div class="row"><input id="qty" type="number" value="1" min="0" step="any"><select id="unit"><option value="g">Grams</option><option value="mg">Milligrams</option></select></div><button onclick="calculateMetal()">Calculate value</button><div class="result" id="metalResult">₹ —</div><p class="small">1 gram = 1,000 milligrams. Gold live rate can be filled from the market card.</p></div>
 <div class="card"><h3>Profit / loss calculator</h3><label>Buy amount (INR)</label><input id="buy" type="number" min="0" placeholder="Amount invested"><label>Current value (INR)</label><input id="now" type="number" min="0" placeholder="Current value"><button onclick="calculatePL()">Calculate P/L</button><div class="result" id="plResult">₹ —</div><p class="small" id="plPercent">Enter both values.</p></div>
 <div class="card"><h3>Diamond estimate</h3><label>Carat weight</label><input id="carat" type="number" min="0" step="0.01" placeholder="e.g. 0.50"><label>Price per carat (INR, from your jeweller/appraisal)</label><input id="caratRate" type="number" min="0" placeholder="Enter quoted rate"><button onclick="diamondCalc()">Estimate value</button><div class="result" id="diamondResult">₹ —</div><p class="small">Diamond value has no single universal live spot price. Cut, colour, clarity, certification and market affect value.</p></div>
 <div class="card"><h3>Milligram quick converter</h3><label>Grams</label><input id="grams" type="number" value="1" min="0" step="any" oninput="convertUnits()"><div class="result" id="mgResult">1,000 mg</div><p class="small">Simple weight conversion, independent of market price.</p></div>
@@ -56,12 +56,12 @@ label{display:block;font-size:12px;color:#b8cbd9;margin:10px 0 5px}input,select{
 <div class="card"><h3>What can move gold?</h3><ul class="list"><li>US dollar strength or weakness</li><li>Interest-rate expectations and bond yields</li><li>Central-bank and investment demand</li><li>Geopolitical uncertainty</li><li>USD/INR exchange-rate movement</li></ul></div>
 <div class="card"><h3>Crypto risk monitor</h3><ul class="list"><li>High volatility and sudden price gaps</li><li>Regulatory and exchange developments</li><li>Liquidity and market sentiment</li><li>Network and security events</li><li>Never assume past returns predict future returns</li></ul></div>
 </div>
-<div class="card"><h3>Live-data transparency</h3><div class="notice">Only values successfully received from the named data providers are displayed as live. Silver, platinum, palladium, stocks and other assets remain unavailable until a reliable feed is connected. Do not treat missing data as zero or as a demo quote.</div><p class="small" id="sourceLog">Sources will appear here after refresh.</p></div>
+<div class="card"><h3>Live-data transparency</h3><div class="notice">Only values successfully received from the named data providers are displayed as live. Gold and silver use Gold-API spot quotes; other assets remain unavailable until a reliable feed is connected. Do not treat missing data as zero or as a demo quote.</div><p class="small" id="sourceLog">Sources will appear here after refresh.</p></div>
 <div class="card"><h3>Ads & publishing</h3><p class="muted">Ad space can be added after the site has original content, a privacy policy and approval from the ad network. Do not click your own ads. If an ad account requires an adult account holder, a parent or guardian must manage it.</p></div>
 </main>
 <div class="footer">FLASH GOLD+++ © 2026 • Educational market information only • Not financial advice</div>
 <script>
-let chart=null;let latest={gold:null,btc:null,eth:null};let fx=null;
+let chart=null;let latest={gold:null,silver:null,btc:null,eth:null};let fx=null;
 const fmt=n=>'₹'+Number(n).toLocaleString('en-IN',{maximumFractionDigits:2});
 async function getJSON(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
 function setText(id,t){document.getElementById(id).textContent=t}
@@ -83,10 +83,18 @@ async function refreshAll(){
    const ch=Number(item.inr_24h_change);setText(key+'Meta',(ch>=0?'+':'')+ch.toFixed(2)+'% • 24h • CoinGecko');saveSnapshot(key,latest[key]);
   }logs.push('Crypto: CoinGecko simple price');
  }catch(e){for(const k of ['btc','eth']){setText(k+'Price','Unavailable');setText(k+'Meta','Live feed unavailable: '+e.message)}logs.push('Crypto unavailable: '+e.message)}
- setText('silverPrice','Unavailable');setText('silverMeta','No verified silver feed connected');
+ try{
+  const silver=await getJSON('https://api.gold-api.com/price/XAG/INR');
+  const ounce=Number(silver.price);
+  if(!Number.isFinite(ounce)||ounce<=0)throw new Error('Silver quote missing');
+  latest.silver=ounce/31.1034768;
+  setText('silverPrice',fmt(latest.silver));
+  setText('silverMeta','Indicative spot • '+fmt(latest.silver*1000)+' / kg • Gold-API XAG/INR');
+  saveSnapshot('silver',latest.silver);logs.push('Silver: Gold-API XAG/INR');
+ }catch(e){latest.silver=null;setText('silverPrice','Unavailable');setText('silverMeta','Live feed unavailable: '+e.message);logs.push('Silver unavailable: '+e.message)}
  setText('connection',logs.some(x=>x.includes('unavailable'))?'● PARTIAL DATA':'● LIVE DATA RECEIVED');
  const stamp=new Date().toLocaleString('en-IN');setText('updated','Last checked: '+stamp);setText('sourceLog',logs.join(' • '));drawChart();checkAlerts();
- if(latest.gold)document.getElementById('rate').value=latest.gold.toFixed(2);
+ syncMetalRate();
 }
 function drawChart(){
  const key=document.getElementById('chartAsset').value,range=document.getElementById('chartRange').value;
@@ -95,7 +103,8 @@ function drawChart(){
  chart=new Chart(ctx,{type:'line',data:{labels:arr.map(x=>new Date(x.t).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})),datasets:[{label:key.toUpperCase()+' INR snapshots',data:arr.map(x=>x.v),borderColor:'#62e7df',backgroundColor:'rgba(98,231,223,.12)',fill:true,tension:.28,pointRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#eaf5ff'}}},scales:{x:{ticks:{color:'#9bb0c3',maxTicksLimit:6},grid:{color:'#ffffff0c'}},y:{ticks:{color:'#9bb0c3',callback:v=>'₹'+Number(v).toLocaleString('en-IN')},grid:{color:'#ffffff12'}}}}});
  setText('chartNote',arr.length?'Showing '+arr.length+' snapshots collected by this browser. Not an exchange-supplied historical series.':'No snapshots yet. Refresh prices while online to begin building your local chart.');
 }
-function calculateMetal(){let rate=Number(document.getElementById('rate').value),q=Number(document.getElementById('qty').value),unit=document.getElementById('unit').value;if(document.getElementById('calcAsset').value==='silver')rate=Number(prompt('Enter current verified silver rate per gram (INR):',''));if(!Number.isFinite(rate)||!Number.isFinite(q)||rate<0||q<0){setText('metalResult','Enter valid values');return}setText('metalResult',fmt(rate*q/(unit==='mg'?1000:1)))}
+function syncMetalRate(){const key=document.getElementById('calcAsset').value,rate=latest[key],field=document.getElementById('rate');field.value=rate?rate.toFixed(2):'';field.placeholder=rate?'Live '+key+' rate per gram':'Refresh live '+key+' rate first'}
+function calculateMetal(){let rate=Number(document.getElementById('rate').value),q=Number(document.getElementById('qty').value),unit=document.getElementById('unit').value;const key=document.getElementById('calcAsset').value;if(key==='silver'||key==='gold'){if(latest[key])rate=latest[key];else{setText('metalResult',key+' live rate unavailable. Refresh prices first.');return}}if(!Number.isFinite(rate)||!Number.isFinite(q)||rate<0||q<0){setText('metalResult','Enter valid values');return}setText('metalResult',fmt(rate*q/(unit==='mg'?1000:1)))}
 function calculatePL(){let b=Number(document.getElementById('buy').value),n=Number(document.getElementById('now').value);if(!(b>0)||!Number.isFinite(n)||n<0){setText('plResult','Enter valid values');return}let d=n-b,p=d/b*100;setText('plResult',(d>=0?'+':'−')+fmt(Math.abs(d)));setText('plPercent',(p>=0?'+':'')+p.toFixed(2)+'% '+(d>=0?'gain':'loss'))}
 function diamondCalc(){let c=Number(document.getElementById('carat').value),r=Number(document.getElementById('caratRate').value);setText('diamondResult',c>0&&r>=0?fmt(c*r):'Enter valid values')}
 function convertUnits(){let g=Number(document.getElementById('grams').value);setText('mgResult',Number.isFinite(g)?(g*1000).toLocaleString('en-IN')+' mg':'—')}
