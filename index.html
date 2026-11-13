@@ -1,257 +1,110 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>METALPULSE AI</title>
+<meta name="theme-color" content="#071321">
+<title>FLASH GOLD+++ | Live Asset Intelligence</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;background:#080b10;color:#f5f5f5;
- font-family:Arial,sans-serif
-}
-header{
- padding:22px 16px;background:#111720;
- border-bottom:1px solid #c99b36;
- display:flex;justify-content:space-between;
- align-items:center;flex-wrap:wrap;gap:10px
-}
-.logo{font-size:23px;font-weight:900;color:#e8bb55}
-header small{color:#aaa}
-nav{
- display:flex;gap:9px;padding:12px;
- overflow-x:auto;background:#10151d
-}
-nav a{
- color:#ddd;text-decoration:none;
- white-space:nowrap;padding:10px 13px;
- border:1px solid #303744;border-radius:8px
-}
-main{padding:16px;max-width:1050px;margin:auto}
-h2{color:#e8bb55;font-size:20px}
-.card{
- background:#121923;border:1px solid #293442;
- padding:17px;border-radius:13px;margin:13px 0
-}
-.grid{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
- gap:12px
-}
-.price{font-size:25px;color:#e8bb55;font-weight:bold}
-.muted{color:#9ba6b5;font-size:13px}
-input,select{
- width:100%;padding:13px;margin:7px 0;
- background:#080e16;color:white;
- border:1px solid #394657;border-radius:8px;
- font-size:16px
-}
-button{
- background:#d9aa45;color:#111;
- border:0;padding:13px 18px;border-radius:8px;
- font-weight:bold;cursor:pointer
-}
-.tag{color:#f2c65f;font-size:12px}
-canvas{max-height:270px}
-footer{text-align:center;padding:30px;color:#888}
-@media(max-width:450px){
- .grid{grid-template-columns:1fr}
- header{align-items:flex-start}
-}
+:root{--bg:#071321;--panel:rgba(15,31,49,.88);--line:rgba(104,221,220,.22);--cyan:#62e7df;--gold:#f2c879;--text:#eef7ff;--muted:#9bb0c3;--green:#69dfaa;--red:#ff8585}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#12334a 0,transparent 34%),radial-gradient(ellipse at 95% 20%,#39301d 0,transparent 27%),linear-gradient(145deg,#050b14,#0b1b2c 55%,#101b2b);background-attachment:fixed;color:var(--text);font-family:system-ui,Arial,sans-serif}
+header{padding:22px 16px 18px;border-bottom:1px solid var(--line);background:rgba(4,13,24,.72);backdrop-filter:blur(14px);position:relative}
+.top{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-size:clamp(22px,5vw,31px);font-weight:950;letter-spacing:1.4px;color:var(--gold);text-shadow:0 0 24px #f2c87933}.sub{font-size:10px;letter-spacing:2.5px;color:#a8c6d7}.status{font-size:12px;color:var(--cyan);border:1px solid var(--line);border-radius:30px;padding:8px 12px}
+nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow:auto;padding:10px max(12px,calc((100% - 1100px)/2));background:#071321eF;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}nav a{white-space:nowrap;color:#dcebf5;text-decoration:none;padding:9px 12px;border:1px solid #ffffff1c;border-radius:22px;font-size:12px}nav a:hover{border-color:var(--cyan);color:var(--cyan)}
+main{max-width:1100px;margin:auto;padding:16px}.intro{padding:15px 2px 8px}.eyebrow{font-size:11px;color:var(--cyan);letter-spacing:2px}.intro h1{font-size:clamp(24px,5vw,36px);margin:7px 0}.intro p,.muted{color:var(--muted);font-size:13px;line-height:1.55}
+.section-title{font-size:19px;color:var(--cyan);margin:26px 0 10px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 12px 32px #0004;backdrop-filter:blur(12px);min-width:0}.asset-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.asset-name{font-weight:800}.symbol{font-size:11px;color:var(--muted)}.price{font-size:clamp(20px,4vw,27px);font-weight:850;color:var(--gold);margin:12px 0 4px;overflow-wrap:anywhere}.change{font-size:12px;color:var(--muted)}.up{color:var(--green)}.down{color:var(--red)}.pill{font-size:10px;padding:5px 8px;border-radius:20px;background:#62e7df14;color:var(--cyan);border:1px solid var(--line)}
+label{display:block;font-size:12px;color:#b8cbd9;margin:10px 0 5px}input,select{width:100%;padding:12px;background:#071523;color:var(--text);border:1px solid #34536a;border-radius:10px;font-size:15px;min-width:0}button{border:0;border-radius:10px;padding:12px 15px;background:linear-gradient(110deg,#65e5df,#c4f2d9);color:#061522;font-weight:850;cursor:pointer;margin-top:10px}button.secondary{background:#132b40;color:#dcecf7;border:1px solid var(--line)}button.danger{background:#39202a;color:#ffd9df;border:1px solid #9b4556}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.chart-wrap{height:270px;position:relative}.small{font-size:11px;color:var(--muted)}.result{font-size:22px;color:var(--gold);font-weight:800;margin-top:12px;overflow-wrap:anywhere}.notice{padding:12px;border-radius:11px;background:#f2c87912;border:1px solid #f2c87940;color:#f5dca9;font-size:12px;line-height:1.5}.list{padding-left:18px;color:#d6e4ee;font-size:13px;line-height:1.8}.footer{text-align:center;color:#8298aa;padding:28px 10px;font-size:11px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:390px){main{padding:12px}.card{padding:13px}.grid{gap:9px}}
 </style>
 </head>
 <body>
-
-<header>
- <div>
-  <div class="logo">✦ METALPULSE AI</div>
-  <small>PRECIOUS METALS INTELLIGENCE</small>
- </div>
- <span class="tag">MARKET ANALYTICS</span>
-</header>
-
-<nav>
- <a href="#dashboard">Dashboard</a>
- <a href="#calculator">Calculator</a>
- <a href="#charts">Graphs</a>
- <a href="#analysis">Analysis</a>
- <a href="#recovery">Recovery</a>
-</nav>
-
+<header><div class="top"><div><div class="brand">✦ FLASH GOLD+++</div><div class="sub">LIVE ASSET INTELLIGENCE • INDIA</div></div><div class="status" id="connection">● CONNECTING DATA</div></div></header>
+<nav><a href="#markets">Markets</a><a href="#charts">Charts</a><a href="#tools">Calculators</a><a href="#watch">Watchlist</a><a href="#insights">Insights</a></nav>
 <main>
+<div class="intro"><div class="eyebrow">MARKET OVERVIEW / INR</div><h1>Know the market. Track every move.</h1><p>Live quotes where a verified public data source is available. Every quote shows its source and update time. No invented prices.</p><div class="row"><button onclick="refreshAll()">↻ Refresh prices</button><span class="small" id="updated">Waiting for first update…</span></div></div>
 
-<section id="dashboard">
- <h2>Market Dashboard</h2>
- <p class="muted">Illustrative demo prices — not live market quotations.</p>
+<h2 class="section-title" id="markets">Live markets</h2>
+<div class="grid">
+<div class="card"><div class="asset-head"><div><div class="asset-name">Gold</div><div class="symbol">XAU • INR / gram</div></div><span class="pill">METAL</span></div><div class="price" id="goldPrice">Loading…</div><div class="change" id="goldMeta">Source: Gold-API</div></div>
+<div class="card"><div class="asset-head"><div><div class="asset-name">Silver</div><div class="symbol">XAG • INR / gram</div></div><span class="pill">METAL</span></div><div class="price" id="silverPrice">Not available</div><div class="change" id="silverMeta">No verified feed connected</div></div>
+<div class="card"><div class="asset-head"><div><div class="asset-name">Bitcoin</div><div class="symbol">BTC • INR</div></div><span class="pill">CRYPTO</span></div><div class="price" id="btcPrice">Loading…</div><div class="change" id="btcMeta">Source: CoinGecko</div></div>
+<div class="card"><div class="asset-head"><div><div class="asset-name">Ethereum</div><div class="symbol">ETH • INR</div></div><span class="pill">CRYPTO</span></div><div class="price" id="ethPrice">Loading…</div><div class="change" id="ethMeta">Source: CoinGecko</div></div>
+</div>
+<p class="small">Gold quote is converted from USD per troy ounce to INR per gram using a public USD/INR reference rate. It is an indicative spot estimate, not a jeweller's retail price. Taxes, GST, making charges and local premiums are excluded.</p>
 
- <div class="grid">
-  <div class="card">
-   <div>🥇 GOLD</div>
-   <div class="price" id="gold">₹15,000</div>
-   <small class="muted">Demo INR / gram</small>
-  </div>
-  <div class="card">
-   <div>🥈 SILVER</div>
-   <div class="price" id="silver">₹180</div>
-   <small class="muted">Demo INR / gram</small>
-  </div>
-  <div class="card">
-   <div>PLATINUM</div>
-   <div class="price">Demo only</div>
-  </div>
-  <div class="card">
-   <div>BITCOIN</div>
-   <div class="price">Demo only</div>
-  </div>
- </div>
- <div class="card">
-  <b>Data status</b>
-  <p class="muted" id="status">DEMO MODE — Connect a verified API for live prices.</p>
- </div>
-</section>
+<h2 class="section-title" id="charts">Price tracker</h2>
+<div class="card"><div class="row"><div><label>Choose asset</label><select id="chartAsset" onchange="drawChart()"><option value="gold">Gold (live snapshots)</option><option value="btc">Bitcoin (live snapshots)</option><option value="eth">Ethereum (live snapshots)</option></select></div><div><label>Chart range</label><select id="chartRange" onchange="drawChart()"><option value="all">All saved snapshots</option><option value="day">Last 24 hours</option></select></div></div><div class="chart-wrap"><canvas id="priceChart"></canvas></div><p class="small" id="chartNote">This graph builds from prices collected while this page is open. It is not historical exchange data.</p></div>
 
-<section id="calculator">
- <h2>Gram & Milligram Calculator</h2>
- <div class="card">
-  <label>Select metal</label>
-  <select id="metal">
-   <option value="gold">Gold</option>
-   <option value="silver">Silver</option>
-  </select>
-  <label>Price per gram (₹)</label>
-  <input id="gramPrice" type="number" value="15000">
-  <label>Quantity (milligrams)</label>
-  <input id="mg" type="number" value="1">
-  <button onclick="calculate()">Calculate</button>
-  <h3 id="result" class="price">₹15.00</h3>
-  <p class="muted">1 gram = 1000 milligrams.</p>
- </div>
-</section>
+<h2 class="section-title" id="tools">Calculators</h2>
+<div class="grid">
+<div class="card"><h3>Gold / silver quantity value</h3><label>Asset</label><select id="calcAsset"><option value="gold">Gold</option><option value="silver">Silver (manual rate)</option></select><label>Rate per gram (INR)</label><input id="rate" type="number" placeholder="Enter rate per gram"><label>Quantity</label><div class="row"><input id="qty" type="number" value="1" min="0" step="any"><select id="unit"><option value="g">Grams</option><option value="mg">Milligrams</option></select></div><button onclick="calculateMetal()">Calculate value</button><div class="result" id="metalResult">₹ —</div><p class="small">1 gram = 1,000 milligrams. Gold live rate can be filled from the market card.</p></div>
+<div class="card"><h3>Profit / loss calculator</h3><label>Buy amount (INR)</label><input id="buy" type="number" min="0" placeholder="Amount invested"><label>Current value (INR)</label><input id="now" type="number" min="0" placeholder="Current value"><button onclick="calculatePL()">Calculate P/L</button><div class="result" id="plResult">₹ —</div><p class="small" id="plPercent">Enter both values.</p></div>
+<div class="card"><h3>Diamond estimate</h3><label>Carat weight</label><input id="carat" type="number" min="0" step="0.01" placeholder="e.g. 0.50"><label>Price per carat (INR, from your jeweller/appraisal)</label><input id="caratRate" type="number" min="0" placeholder="Enter quoted rate"><button onclick="diamondCalc()">Estimate value</button><div class="result" id="diamondResult">₹ —</div><p class="small">Diamond value has no single universal live spot price. Cut, colour, clarity, certification and market affect value.</p></div>
+<div class="card"><h3>Milligram quick converter</h3><label>Grams</label><input id="grams" type="number" value="1" min="0" step="any" oninput="convertUnits()"><div class="result" id="mgResult">1,000 mg</div><p class="small">Simple weight conversion, independent of market price.</p></div>
+</div>
 
-<section id="charts">
- <h2>Market Price Graph</h2>
- <div class="card">
-  <span class="tag">ILLUSTRATIVE DATA</span>
-  <select id="chartMetal" onchange="drawChart()">
-   <option value="gold">Gold</option>
-   <option value="silver">Silver</option>
-  </select>
-  <canvas id="marketChart"></canvas>
-  <p class="muted">Example historical pattern only. Replace with verified dated data.</p>
- </div>
-</section>
+<h2 class="section-title" id="watch">Watchlist & alerts</h2>
+<div class="grid">
+<div class="card"><h3>Personal watchlist</h3><label>Asset name</label><input id="watchName" placeholder="e.g. Gold, BTC, Tata Motors"><label>Target price (INR)</label><input id="watchTarget" type="number" min="0" placeholder="Target value"><button onclick="addWatch()">Add target</button><div id="watchItems" class="small" style="margin-top:12px">No targets saved yet.</div></div>
+<div class="card"><h3>Price alert status</h3><p class="muted">Targets are checked when you open or refresh this page. Browser notifications are not guaranteed while the page is closed.</p><button class="secondary" onclick="enableNotifications()">Enable browser notifications</button><div class="small" id="notifyStatus">Notifications are off.</div></div>
+</div>
 
-<section id="analysis">
- <h2>Why Did The Market Fall?</h2>
- <div class="card">
-  <h3>Market Analysis Framework</h3>
-  <p>💵 US Dollar strength</p>
-  <p>🏦 US Federal Reserve interest rates</p>
-  <p>🌍 Global economic uncertainty</p>
-  <p>📊 Investor profit booking</p>
-  <p>🇮🇳 Indian Rupee exchange rate</p>
-  <p>📦 Physical gold and silver demand</p>
-  <p class="muted">
-   These are possible market drivers, not confirmed causes
-   of a particular price movement. Each report needs dated evidence.
-  </p>
- </div>
-</section>
-
-<section id="recovery">
- <h2>AI Recovery Intelligence</h2>
- <div class="card">
-  <span class="tag">FORECAST FRAMEWORK</span>
-  <h3>Recovery Conditions</h3>
-  <p>1. Dollar weakness may support gold.</p>
-  <p>2. Lower interest-rate expectations may support demand.</p>
-  <p>3. Strong physical demand may support prices.</p>
-  <p>4. Currency changes affect Indian prices.</p>
-  <hr>
-  <b>Forecast status: Not enough verified live data.</b>
-  <p class="muted">
-   No exact recovery date or guaranteed profit.
-   Future scenarios require current data and a forecasting model.
-  </p>
- </div>
-</section>
-
-<section>
- <h2>Advertisement</h2>
- <div class="card" style="text-align:center">
-  <p class="muted">Advertisement placement</p>
-  <p>Ad space reserved</p>
- </div>
-</section>
-
-<section>
- <h2>Market Data Sources</h2>
- <div class="card">
-  <p class="muted">
-   Connect verified gold, silver, currency and economic
-   data providers here. Display source, currency,
-   timestamp and update frequency for every quote.
-  </p>
- </div>
-</section>
-
+<h2 class="section-title" id="insights">Market intelligence</h2>
+<div class="grid">
+<div class="card"><h3>What can move gold?</h3><ul class="list"><li>US dollar strength or weakness</li><li>Interest-rate expectations and bond yields</li><li>Central-bank and investment demand</li><li>Geopolitical uncertainty</li><li>USD/INR exchange-rate movement</li></ul></div>
+<div class="card"><h3>Crypto risk monitor</h3><ul class="list"><li>High volatility and sudden price gaps</li><li>Regulatory and exchange developments</li><li>Liquidity and market sentiment</li><li>Network and security events</li><li>Never assume past returns predict future returns</li></ul></div>
+</div>
+<div class="card"><h3>Live-data transparency</h3><div class="notice">Only values successfully received from the named data providers are displayed as live. Silver, platinum, palladium, stocks and other assets remain unavailable until a reliable feed is connected. Do not treat missing data as zero or as a demo quote.</div><p class="small" id="sourceLog">Sources will appear here after refresh.</p></div>
+<div class="card"><h3>Ads & publishing</h3><p class="muted">Ad space can be added after the site has original content, a privacy policy and approval from the ad network. Do not click your own ads. If an ad account requires an adult account holder, a parent or guardian must manage it.</p></div>
 </main>
-
-<footer>
- METALPULSE AI © 2026<br>
- Educational market intelligence. Not financial advice.
-</footer>
-
+<div class="footer">FLASH GOLD+++ © 2026 • Educational market information only • Not financial advice</div>
 <script>
-let chart;
-
-function calculate(){
- const price=Number(document.getElementById("gramPrice").value);
- const mg=Number(document.getElementById("mg").value);
- if(!Number.isFinite(price)||!Number.isFinite(mg)||price<0||mg<0){
-  document.getElementById("result").innerText="Enter valid values";
-  return;
- }
- const answer=price*mg/1000;
- document.getElementById("result").innerText=
-  "₹"+answer.toLocaleString("en-IN",{maximumFractionDigits:4});
+let chart=null;let latest={gold:null,btc:null,eth:null};let fx=null;
+const fmt=n=>'₹'+Number(n).toLocaleString('en-IN',{maximumFractionDigits:2});
+async function getJSON(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+function setText(id,t){document.getElementById(id).textContent=t}
+function saveSnapshot(key,value){let arr=JSON.parse(localStorage.getItem('fgp_'+key)||'[]');arr.push({t:Date.now(),v:value});arr=arr.filter(x=>x.t>Date.now()-7*86400000).slice(-500);localStorage.setItem('fgp_'+key,JSON.stringify(arr))}
+async function refreshAll(){
+ setText('connection','● FETCHING LIVE DATA');let logs=[];
+ try{
+  const [gold,rate]=await Promise.all([getJSON('https://api.gold-api.com/price/XAU'),getJSON('https://open.er-api.com/v6/latest/USD')]);
+  const usdInr=Number(rate.rates&&rate.rates.INR);const ounce=Number(gold.price);
+  if(!usdInr||!ounce)throw new Error('Gold/FX response incomplete');
+  fx=usdInr;latest.gold=ounce/31.1034768*usdInr;
+  setText('goldPrice',fmt(latest.gold));setText('goldMeta','Indicative spot • Gold-API + USD/INR reference');saveSnapshot('gold',latest.gold);logs.push('Gold: Gold-API XAU + open.er-api USD/INR');
+ }catch(e){setText('goldPrice','Unavailable');setText('goldMeta','Live feed unavailable: '+e.message);logs.push('Gold unavailable: '+e.message)}
+ try{
+  const c=await getJSON('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=inr&include_24hr_change=true');
+  for(const [id,key] of [['bitcoin','btc'],['ethereum','eth']]){
+   const item=c[id];if(!item||!Number(item.inr))throw new Error('Crypto quote missing');
+   latest[key]=Number(item.inr);setText(key+'Price',fmt(item.inr));
+   const ch=Number(item.inr_24h_change);setText(key+'Meta',(ch>=0?'+':'')+ch.toFixed(2)+'% • 24h • CoinGecko');saveSnapshot(key,latest[key]);
+  }logs.push('Crypto: CoinGecko simple price');
+ }catch(e){for(const k of ['btc','eth']){setText(k+'Price','Unavailable');setText(k+'Meta','Live feed unavailable: '+e.message)}logs.push('Crypto unavailable: '+e.message)}
+ setText('silverPrice','Unavailable');setText('silverMeta','No verified silver feed connected');
+ setText('connection',logs.some(x=>x.includes('unavailable'))?'● PARTIAL DATA':'● LIVE DATA RECEIVED');
+ const stamp=new Date().toLocaleString('en-IN');setText('updated','Last checked: '+stamp);setText('sourceLog',logs.join(' • '));drawChart();checkAlerts();
+ if(latest.gold)document.getElementById('rate').value=latest.gold.toFixed(2);
 }
-
 function drawChart(){
- const metal=document.getElementById("chartMetal").value;
- const labels=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
- const values=metal==="gold"
-  ?[15000,14900,14750,14820,14650,14730,14800]
-  :[180,178,176,179,177,181,182];
-
- if(chart)chart.destroy();
-
- chart=new Chart(document.getElementById("marketChart"),{
-  type:"line",
-  data:{
-   labels,
-   datasets:[{
-    label:metal==="gold"?"Gold demo ₹/g":"Silver demo ₹/g",
-    data:values,
-    borderColor:"#e8bb55",
-    backgroundColor:"rgba(232,187,85,.10)",
-    fill:true,
-    tension:.35
-   }]
-  },
-  options:{
-   responsive:true,
-   plugins:{legend:{labels:{color:"#fff"}}},
-   scales:{
-    x:{ticks:{color:"#aaa"}},
-    y:{ticks:{color:"#aaa"}}
-   }
-  }
- });
+ const key=document.getElementById('chartAsset').value,range=document.getElementById('chartRange').value;
+ let arr=JSON.parse(localStorage.getItem('fgp_'+key)||'[]');if(range==='day')arr=arr.filter(x=>x.t>Date.now()-86400000);
+ const ctx=document.getElementById('priceChart');if(chart)chart.destroy();
+ chart=new Chart(ctx,{type:'line',data:{labels:arr.map(x=>new Date(x.t).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})),datasets:[{label:key.toUpperCase()+' INR snapshots',data:arr.map(x=>x.v),borderColor:'#62e7df',backgroundColor:'rgba(98,231,223,.12)',fill:true,tension:.28,pointRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#eaf5ff'}}},scales:{x:{ticks:{color:'#9bb0c3',maxTicksLimit:6},grid:{color:'#ffffff0c'}},y:{ticks:{color:'#9bb0c3',callback:v=>'₹'+Number(v).toLocaleString('en-IN')},grid:{color:'#ffffff12'}}}}});
+ setText('chartNote',arr.length?'Showing '+arr.length+' snapshots collected by this browser. Not an exchange-supplied historical series.':'No snapshots yet. Refresh prices while online to begin building your local chart.');
 }
-drawChart();
-calculate();
+function calculateMetal(){let rate=Number(document.getElementById('rate').value),q=Number(document.getElementById('qty').value),unit=document.getElementById('unit').value;if(document.getElementById('calcAsset').value==='silver')rate=Number(prompt('Enter current verified silver rate per gram (INR):',''));if(!Number.isFinite(rate)||!Number.isFinite(q)||rate<0||q<0){setText('metalResult','Enter valid values');return}setText('metalResult',fmt(rate*q/(unit==='mg'?1000:1)))}
+function calculatePL(){let b=Number(document.getElementById('buy').value),n=Number(document.getElementById('now').value);if(!(b>0)||!Number.isFinite(n)||n<0){setText('plResult','Enter valid values');return}let d=n-b,p=d/b*100;setText('plResult',(d>=0?'+':'−')+fmt(Math.abs(d)));setText('plPercent',(p>=0?'+':'')+p.toFixed(2)+'% '+(d>=0?'gain':'loss'))}
+function diamondCalc(){let c=Number(document.getElementById('carat').value),r=Number(document.getElementById('caratRate').value);setText('diamondResult',c>0&&r>=0?fmt(c*r):'Enter valid values')}
+function convertUnits(){let g=Number(document.getElementById('grams').value);setText('mgResult',Number.isFinite(g)?(g*1000).toLocaleString('en-IN')+' mg':'—')}
+function getWatches(){return JSON.parse(localStorage.getItem('fgp_watch')||'[]')}
+function addWatch(){let name=document.getElementById('watchName').value.trim(),target=Number(document.getElementById('watchTarget').value);if(!name||!(target>0))return;let a=getWatches();a.push({name,target});localStorage.setItem('fgp_watch',JSON.stringify(a));document.getElementById('watchName').value='';document.getElementById('watchTarget').value='';renderWatches()}
+function renderWatches(){let a=getWatches(),el=document.getElementById('watchItems');el.innerHTML='';if(!a.length){el.textContent='No targets saved yet.';return}a.forEach((x,i)=>{let d=document.createElement('div');d.style.cssText='display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #ffffff18';let s=document.createElement('span');s.textContent=x.name+' • '+fmt(x.target);let b=document.createElement('button');b.className='danger';b.textContent='Remove';b.onclick=()=>{let z=getWatches();z.splice(i,1);localStorage.setItem('fgp_watch',JSON.stringify(z));renderWatches()};d.append(s,b);el.append(d)})}
+async function enableNotifications(){if(!('Notification'in window)){setText('notifyStatus','Notifications not supported in this browser.');return}let p=await Notification.requestPermission();setText('notifyStatus','Notification permission: '+p)}
+function checkAlerts(){if(!('Notification'in window)||Notification.permission!=='granted')return;getWatches().forEach(w=>{let n=w.name.toLowerCase(),v=n.includes('gold')?latest.gold:n.includes('bitcoin')||n==='btc'?latest.btc:n.includes('ethereum')||n==='eth'?latest.eth:null;if(v&&v>=w.target)new Notification('FLASH GOLD+++ target reached',{body:w.name+' is at '+fmt(v)+' (target '+fmt(w.target)+')'})})}
+renderWatches();drawChart();refreshAll();setInterval(refreshAll,120000);
 </script>
 </body>
 </html>
