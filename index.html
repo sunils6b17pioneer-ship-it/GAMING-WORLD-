@@ -3,164 +3,255 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GAMING WORLD | Enter The Universe</title>
-<meta name="description" content="Explore gaming worlds, news, esports and guides.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>METALPULSE AI</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;700;900&display=swap');
-:root{--bg:#080b13;--panel:#111827;--cyan:#00e5ff;--purple:#a855f7;--white:#f5f7ff}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-nav{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#080b13ed;border-bottom:1px solid #ffffff15;position:sticky;top:0;z-index:10;backdrop-filter:blur(15px)}
-.logo{font:900 20px Orbitron;color:var(--cyan);letter-spacing:1px}
-.logo span{color:white}
-.links{display:flex;gap:25px;font-size:13px;color:#c7d0e2}
-.links a:hover{color:var(--cyan)}
-.menu{display:none;color:white;background:none;border:0;font-size:25px}
-.hero{min-height:590px;display:flex;align-items:center;padding:75px 8%;position:relative;overflow:hidden;background:linear-gradient(90deg,#080b13 5%,#080b13dd 43%,#080b1340),url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1800') center/cover}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg),transparent 35%);pointer-events:none}
-.hero-content{max-width:650px;position:relative;z-index:1}
-.eyebrow{color:var(--cyan);font:700 12px Orbitron;letter-spacing:4px;margin-bottom:20px}
-h1{font:900 clamp(42px,8vw,82px) Orbitron;line-height:1.08;margin-bottom:20px}
-h1 span{color:var(--cyan);text-shadow:0 0 25px #00e5ff66}
-.hero p{color:#c2c9d8;line-height:1.8;max-width:520px}
-.actions{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
-.btn{padding:14px 22px;border-radius:5px;background:var(--cyan);color:#061018;font-weight:900;font-size:12px;letter-spacing:1px;display:inline-block}
-.btn.outline{background:transparent;border:1px solid #ffffff55;color:white}
-.section{padding:65px 7%}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:27px}
-.kicker{font:700 11px Orbitron;color:var(--cyan);letter-spacing:3px;margin-bottom:9px}
-h2{font:700 clamp(23px,4vw,34px) Orbitron}
-.sub{color:#8792a8;font-size:13px;margin-top:9px;line-height:1.6}
-.zones{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.zone{min-height:270px;border:1px solid #ffffff1c;border-radius:12px;overflow:hidden;position:relative;background-size:cover;background-position:center;display:flex;align-items:end;transition:.3s}
-.zone:hover{transform:translateY(-5px);border-color:var(--cyan)}
-.zone:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#060911 0%,#060911bb 30%,transparent 100%)}
-.zone-content{position:relative;padding:25px;width:100%}
-.zone small{color:var(--cyan);font:700 10px Orbitron;letter-spacing:2px}
-.zone h3{font:700 25px Orbitron;margin:8px 0}
-.zone p{font-size:12px;color:#c4ccda;line-height:1.6;max-width:400px}
-.zone a{display:inline-block;margin-top:14px;color:var(--cyan);font-size:12px;font-weight:900}
-.freefire{background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?w=900')}
-.bgmi{background-image:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=900')}
-.gta{background-image:url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=900')}
-.minecraft{background-image:url('https://images.unsplash.com/photo-1607513746994-51f730a44832?w=900')}
-.feature{background:linear-gradient(120deg,#111a2b,#17102b);border:1px solid #ffffff18;border-radius:14px;padding:30px;display:grid;grid-template-columns:1.2fr .8fr;gap:25px;align-items:center}
-.feature h3{font:700 27px Orbitron;margin:10px 0}
-.feature p{color:#aeb8ca;line-height:1.8;font-size:13px}
-.feature-art{min-height:180px;border-radius:10px;background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=900') center/cover}
-.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.news-card{background:var(--panel);border:1px solid #ffffff12;border-radius:10px;padding:20px;min-height:170px}
-.news-card small{color:var(--cyan);font-size:10px;font-weight:900;letter-spacing:2px}
-.news-card h3{font-size:16px;margin:14px 0 9px}
-.news-card p{font-size:12px;color:#9ba6ba;line-height:1.7}
-#newsStatus{font-size:12px;color:#9ba6ba;margin-top:15px}
-.guides{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.guide{padding:22px;background:#111827;border-radius:10px;border:1px solid #ffffff15}
-.guide .number{font:900 28px Orbitron;color:var(--purple)}
-.guide h3{margin:10px 0;font-size:16px}
-.guide p{color:#9ba6ba;font-size:12px;line-height:1.7}
-.ad-slot{margin:25px auto;max-width:900px;min-height:90px;border:1px dashed #536078;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#758198;font-size:11px;letter-spacing:2px}
-footer{padding:35px 7%;border-top:1px solid #ffffff15;color:#8590a4;font-size:12px;line-height:2}
-footer strong{color:var(--cyan);font-family:Orbitron}
-@media(max-width:700px){
- nav{padding:0 5%}.menu{display:block}.links{display:none;position:absolute;top:70px;left:0;width:100%;background:#0b101c;padding:20px;flex-direction:column;gap:20px}.links.show{display:flex}
- .hero{min-height:540px;padding:65px 7%;background-position:60% center}
- .zones,.news-grid,.guides{grid-template-columns:1fr}
- .zone{min-height:245px}
- .feature{grid-template-columns:1fr}.feature-art{min-height:150px}
- .section{padding:48px 6%}
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080b10;color:#f5f5f5;
+ font-family:Arial,sans-serif
+}
+header{
+ padding:22px 16px;background:#111720;
+ border-bottom:1px solid #c99b36;
+ display:flex;justify-content:space-between;
+ align-items:center;flex-wrap:wrap;gap:10px
+}
+.logo{font-size:23px;font-weight:900;color:#e8bb55}
+header small{color:#aaa}
+nav{
+ display:flex;gap:9px;padding:12px;
+ overflow-x:auto;background:#10151d
+}
+nav a{
+ color:#ddd;text-decoration:none;
+ white-space:nowrap;padding:10px 13px;
+ border:1px solid #303744;border-radius:8px
+}
+main{padding:16px;max-width:1050px;margin:auto}
+h2{color:#e8bb55;font-size:20px}
+.card{
+ background:#121923;border:1px solid #293442;
+ padding:17px;border-radius:13px;margin:13px 0
+}
+.grid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px
+}
+.price{font-size:25px;color:#e8bb55;font-weight:bold}
+.muted{color:#9ba6b5;font-size:13px}
+input,select{
+ width:100%;padding:13px;margin:7px 0;
+ background:#080e16;color:white;
+ border:1px solid #394657;border-radius:8px;
+ font-size:16px
+}
+button{
+ background:#d9aa45;color:#111;
+ border:0;padding:13px 18px;border-radius:8px;
+ font-weight:bold;cursor:pointer
+}
+.tag{color:#f2c65f;font-size:12px}
+canvas{max-height:270px}
+footer{text-align:center;padding:30px;color:#888}
+@media(max-width:450px){
+ .grid{grid-template-columns:1fr}
+ header{align-items:flex-start}
 }
 </style>
 </head>
 <body>
-<nav>
- <a class="logo" href="#">GAMING<span> WORLD</span></a>
- <button class="menu" onclick="document.querySelector('.links').classList.toggle('show')">☰</button>
- <div class="links">
-  <a href="#games">GAMES</a><a href="#news">NEWS</a><a href="#esports">ESPORTS</a><a href="#guides">GUIDES</a>
- </div>
-</nav>
 
-<header class="hero">
- <div class="hero-content">
-  <div class="eyebrow">WELCOME TO THE NEXT LEVEL</div>
-  <h1>ENTER THE<br><span>GAMEVERSE.</span></h1>
-  <p>Your gaming universe starts here. Explore popular games, discover gaming stories, learn new strategies and follow the esports world.</p>
-  <div class="actions">
-   <a class="btn" href="#games">EXPLORE GAMES ↗</a>
-   <a class="btn outline" href="#news">LATEST NEWS</a>
-  </div>
+<header>
+ <div>
+  <div class="logo">✦ METALPULSE AI</div>
+  <small>PRECIOUS METALS INTELLIGENCE</small>
  </div>
+ <span class="tag">MARKET ANALYTICS</span>
 </header>
 
-<div class="ad-slot">ADVERTISEMENT SPACE</div>
+<nav>
+ <a href="#dashboard">Dashboard</a>
+ <a href="#calculator">Calculator</a>
+ <a href="#charts">Graphs</a>
+ <a href="#analysis">Analysis</a>
+ <a href="#recovery">Recovery</a>
+</nav>
 
-<section class="section" id="games">
- <div class="section-head"><div><div class="kicker">CHOOSE YOUR UNIVERSE</div><h2>GAME WORLDS</h2><p class="sub">Four worlds. Different adventures. One gaming destination.</p></div></div>
- <div class="zones">
-  <article class="zone freefire"><div class="zone-content"><small>BATTLE ROYALE</small><h3>FREE FIRE</h3><p>Discover gameplay tips, updates and battle royale guides.</p><a href="https://ff.garena.com/" target="_blank">EXPLORE FREE FIRE ↗</a></div></article>
-  <article class="zone bgmi"><div class="zone-content"><small>TACTICAL BATTLE</small><h3>BGMI</h3><p>Explore maps, strategies, esports and Battlegrounds updates.</p><a href="https://www.battlegroundsmobileindia.com/" target="_blank">EXPLORE BGMI ↗</a></div></article>
-  <article class="zone gta"><div class="zone-content"><small>OPEN WORLD</small><h3>GTA</h3><p>Explore the open-world gaming universe and its adventures.</p><a href="https://www.rockstargames.com/" target="_blank">EXPLORE GTA ↗</a></div></article>
-  <article class="zone minecraft"><div class="zone-content"><small>BUILD YOUR WORLD</small><h3>MINECRAFT</h3><p>Discover building ideas, survival guides and creative worlds.</p><a href="https://www.minecraft.net/" target="_blank">EXPLORE MINECRAFT ↗</a></div></article>
+<main>
+
+<section id="dashboard">
+ <h2>Market Dashboard</h2>
+ <p class="muted">Illustrative demo prices — not live market quotations.</p>
+
+ <div class="grid">
+  <div class="card">
+   <div>🥇 GOLD</div>
+   <div class="price" id="gold">₹15,000</div>
+   <small class="muted">Demo INR / gram</small>
+  </div>
+  <div class="card">
+   <div>🥈 SILVER</div>
+   <div class="price" id="silver">₹180</div>
+   <small class="muted">Demo INR / gram</small>
+  </div>
+  <div class="card">
+   <div>PLATINUM</div>
+   <div class="price">Demo only</div>
+  </div>
+  <div class="card">
+   <div>BITCOIN</div>
+   <div class="price">Demo only</div>
+  </div>
+ </div>
+ <div class="card">
+  <b>Data status</b>
+  <p class="muted" id="status">DEMO MODE — Connect a verified API for live prices.</p>
  </div>
 </section>
 
-<section class="section" id="esports">
- <div class="feature">
-  <div><div class="kicker">COMPETE. IMPROVE. ACHIEVE.</div><h3>THE ESPORTS ARENA</h3><p>Follow competitive gaming, tournament announcements, team stories and esports highlights. Always check official tournament pages for confirmed dates and rules.</p><div class="actions"><a class="btn" href="https://escharts.com/" target="_blank">EXPLORE ESPORTS ↗</a></div></div>
-  <div class="feature-art"></div>
+<section id="calculator">
+ <h2>Gram & Milligram Calculator</h2>
+ <div class="card">
+  <label>Select metal</label>
+  <select id="metal">
+   <option value="gold">Gold</option>
+   <option value="silver">Silver</option>
+  </select>
+  <label>Price per gram (₹)</label>
+  <input id="gramPrice" type="number" value="15000">
+  <label>Quantity (milligrams)</label>
+  <input id="mg" type="number" value="1">
+  <button onclick="calculate()">Calculate</button>
+  <h3 id="result" class="price">₹15.00</h3>
+  <p class="muted">1 gram = 1000 milligrams.</p>
  </div>
 </section>
 
-<section class="section" id="news">
- <div class="section-head"><div><div class="kicker">THE GAMING RADAR</div><h2>GAMING NEWS</h2><p class="sub">A live news feed when the news service is available.</p></div></div>
- <div class="news-grid" id="newsGrid">
-  <article class="news-card"><small>FREE FIRE</small><h3>Explore official game updates</h3><p>Visit the official Free Fire website for announcements and updates.</p><a href="https://ff.garena.com/" target="_blank">Read official updates ↗</a></article>
-  <article class="news-card"><small>BGMI</small><h3>Follow Battlegrounds news</h3><p>Check official announcements, events and game updates.</p><a href="https://www.battlegroundsmobileindia.com/" target="_blank">Read official updates ↗</a></article>
-  <article class="news-card"><small>GAMING</small><h3>Discover gaming stories</h3><p>Explore gaming coverage and industry stories.</p><a href="https://www.ign.com/" target="_blank">Visit IGN ↗</a></article>
- </div>
- <p id="newsStatus">Loading news feed where available...</p>
-</section>
-
-<section class="section" id="guides">
- <div class="section-head"><div><div class="kicker">LEVEL UP YOUR SKILLS</div><h2>GAMING GUIDES</h2><p class="sub">Helpful starting points for your next gaming session.</p></div></div>
- <div class="guides">
-  <article class="guide"><div class="number">01</div><h3>Battle Royale Basics</h3><p>Learn map awareness, teamwork, smart positioning and how to make better decisions.</p></article>
-  <article class="guide"><div class="number">02</div><h3>Improve Your Gameplay</h3><p>Build consistent practice habits, learn controls and review your matches.</p></article>
-  <article class="guide"><div class="number">03</div><h3>Gaming Setup Guide</h3><p>Explore device settings, comfortable controls and ways to improve your setup.</p></article>
+<section id="charts">
+ <h2>Market Price Graph</h2>
+ <div class="card">
+  <span class="tag">ILLUSTRATIVE DATA</span>
+  <select id="chartMetal" onchange="drawChart()">
+   <option value="gold">Gold</option>
+   <option value="silver">Silver</option>
+  </select>
+  <canvas id="marketChart"></canvas>
+  <p class="muted">Example historical pattern only. Replace with verified dated data.</p>
  </div>
 </section>
 
-<div class="ad-slot">ADVERTISEMENT SPACE</div>
+<section id="analysis">
+ <h2>Why Did The Market Fall?</h2>
+ <div class="card">
+  <h3>Market Analysis Framework</h3>
+  <p>💵 US Dollar strength</p>
+  <p>🏦 US Federal Reserve interest rates</p>
+  <p>🌍 Global economic uncertainty</p>
+  <p>📊 Investor profit booking</p>
+  <p>🇮🇳 Indian Rupee exchange rate</p>
+  <p>📦 Physical gold and silver demand</p>
+  <p class="muted">
+   These are possible market drivers, not confirmed causes
+   of a particular price movement. Each report needs dated evidence.
+  </p>
+ </div>
+</section>
+
+<section id="recovery">
+ <h2>AI Recovery Intelligence</h2>
+ <div class="card">
+  <span class="tag">FORECAST FRAMEWORK</span>
+  <h3>Recovery Conditions</h3>
+  <p>1. Dollar weakness may support gold.</p>
+  <p>2. Lower interest-rate expectations may support demand.</p>
+  <p>3. Strong physical demand may support prices.</p>
+  <p>4. Currency changes affect Indian prices.</p>
+  <hr>
+  <b>Forecast status: Not enough verified live data.</b>
+  <p class="muted">
+   No exact recovery date or guaranteed profit.
+   Future scenarios require current data and a forecasting model.
+  </p>
+ </div>
+</section>
+
+<section>
+ <h2>Advertisement</h2>
+ <div class="card" style="text-align:center">
+  <p class="muted">Advertisement placement</p>
+  <p>Ad space reserved</p>
+ </div>
+</section>
+
+<section>
+ <h2>Market Data Sources</h2>
+ <div class="card">
+  <p class="muted">
+   Connect verified gold, silver, currency and economic
+   data providers here. Display source, currency,
+   timestamp and update frequency for every quote.
+  </p>
+ </div>
+</section>
+
+</main>
 
 <footer>
- <strong>GAMING WORLD</strong><br>
- Your gateway to gaming, esports, news and guides.<br>
- This is an independent fan website and is not affiliated with Garena, Krafton, Rockstar Games or Mojang.<br>
- Game names and trademarks belong to their respective owners.<br>
- © 2026 GAMING WORLD. All rights reserved.
+ METALPULSE AI © 2026<br>
+ Educational market intelligence. Not financial advice.
 </footer>
 
 <script>
-const grid=document.getElementById('newsGrid');
-const statusText=document.getElementById('newsStatus');
-const rss='https://news.google.com/rss/search?q=gaming+news+when:7d&hl=en-IN&gl=IN&ceid=IN:en';
-const proxy='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rss);
-function safeText(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function safeUrl(s){try{const u=new URL(s);return u.protocol==='https:'?u.href:'#'}catch(e){return '#'}}
-fetch(proxy).then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
- if(!data.items||!data.items.length)throw Error();
- grid.innerHTML=data.items.slice(0,6).map(item=>{
-  const link=safeUrl(item.link);
-  const title=safeText(item.title);
-  const date=safeText((item.pubDate||'').slice(0,10));
-  return `<article class="news-card"><small>GAMING NEWS · ${date}</small><h3>${title}</h3><p>Open the source to read the full story.</p><a href="${link}" target="_blank" rel="noopener">READ STORY ↗</a></article>`;
- }).join('');
- statusText.textContent='News feed updated from Google News search results. Check each linked source for details.';
-}).catch(()=>{statusText.textContent='The external news feed is unavailable right now. Use the official game links above for verified updates.'});
+let chart;
+
+function calculate(){
+ const price=Number(document.getElementById("gramPrice").value);
+ const mg=Number(document.getElementById("mg").value);
+ if(!Number.isFinite(price)||!Number.isFinite(mg)||price<0||mg<0){
+  document.getElementById("result").innerText="Enter valid values";
+  return;
+ }
+ const answer=price*mg/1000;
+ document.getElementById("result").innerText=
+  "₹"+answer.toLocaleString("en-IN",{maximumFractionDigits:4});
+}
+
+function drawChart(){
+ const metal=document.getElementById("chartMetal").value;
+ const labels=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+ const values=metal==="gold"
+  ?[15000,14900,14750,14820,14650,14730,14800]
+  :[180,178,176,179,177,181,182];
+
+ if(chart)chart.destroy();
+
+ chart=new Chart(document.getElementById("marketChart"),{
+  type:"line",
+  data:{
+   labels,
+   datasets:[{
+    label:metal==="gold"?"Gold demo ₹/g":"Silver demo ₹/g",
+    data:values,
+    borderColor:"#e8bb55",
+    backgroundColor:"rgba(232,187,85,.10)",
+    fill:true,
+    tension:.35
+   }]
+  },
+  options:{
+   responsive:true,
+   plugins:{legend:{labels:{color:"#fff"}}},
+   scales:{
+    x:{ticks:{color:"#aaa"}},
+    y:{ticks:{color:"#aaa"}}
+   }
+  }
+ });
+}
+drawChart();
+calculate();
 </script>
 </body>
 </html>
